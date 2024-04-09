@@ -6,5 +6,6 @@ export default {
     medium: '#6e6969',
     light: '#e0e0e0',
     extraLight: '#f5f4f4',
+    dark: '#0c0c0c',
     danger: '#ff5252',
 }

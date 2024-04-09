@@ -1,16 +1,13 @@
-import Icon from "./app/components/Icon";
-import ListItem from "./app/components/ListItem";
-import Screen from "./app/components/Screen";
-import AccountScreen from "./app/screens/AccountScreen";
-import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
-import MessagesScreen from "./app/screens/MessagesScreen";
-import ViewImageScreen from "./app/screens/ViewImageScreen";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import LoginScreen from "./app/screens/LoginScreen";
+
 
 export default function App() {
+   
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <AccountScreen />
+      <LoginScreen />
     </GestureHandlerRootView>
   )
 }
