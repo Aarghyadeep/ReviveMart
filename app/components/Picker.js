@@ -1,22 +1,33 @@
 import { Button, FlatList, Modal, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles"
-import AppText from "./AppText";
+import AppText from "./Text";
 import { useState } from "react";
 import PickerItem from "./PickerItem";
 
 
-export default function AppPicker({ icon, placeholder, items, onSelectItem, selectedItem }) {
+export default function AppPicker({ 
+  icon, 
+  placeholder,
+  numberOfColumns=1,
+  PickerItemComponent= PickerItem, 
+  items, 
+  onSelectItem, 
+  selectedItem, 
+  width="100%" }) {
   
   const [modalVisible, setModalVisible] = useState(false);  
   
   return (
     <>
     <TouchableWithoutFeedback onPress={()=> setModalVisible(true)}>
-    <View style={styles.container}>
+    <View style={[styles.container,{ width }]}>
       {icon && <MaterialCommunityIcons name={icon} size={20}
       color={defaultStyles.colors.medium} style={styles.icon} />}  
-      <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+      {selectedItem ? (<AppText style={styles.text}>
+        {selectedItem.label}
+        </AppText>) : (<AppText style={styles.placeholder}>
+          {placeholder}</AppText>)}
       <MaterialCommunityIcons name="chevron-down" size={20}
       color={defaultStyles.colors.medium} />
     </View>
@@ -25,9 +36,12 @@ export default function AppPicker({ icon, placeholder, items, onSelectItem, sele
         <Button title="close" onPress={()=> setModalVisible(false)} />
         <FlatList
          data={items}
+         numColumns={numberOfColumns}
          keyExtractor={item => item.value.toString()}
          renderItem={({item}) => 
-           <PickerItem label={item.label}
+           <PickerItemComponent 
+           item={item}
+           label={item.label}
            onPress={()=> {
               setModalVisible(false);
               onSelectItem(item);
@@ -44,7 +58,6 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.extraLight,
     borderRadius: 25,
     flexDirection: 'row',
-    width: '100%',
     padding: 15,
     marginVertical: 10,
     alignItems: 'center',
@@ -53,6 +66,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   text: {
+    flex: 1,
+  },
+  placeholder: {
+    color: defaultStyles.colors.medium,
     flex: 1,
   }
 })

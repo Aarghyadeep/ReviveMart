@@ -1,28 +1,26 @@
-import { FlatList, View } from "react-native";
-import ListItem from "../components/ListItem";
+import { FlatList } from "react-native";
 import Screen from "../components/Screen";
-import ListItemSeparator from "../components/ListItemSeparator";
-import ListItemDeleteAction from "../components/ListItemDeleteAction";
 import { useState } from "react";
+import { ListItem, ListItemDeleteAction, ListItemSeparator} from "../components/Lists";
 
 
 const initialMessages  = [
     {
         id: 1,
-        title: 't1',
-        description: 'd1',
+        title: 'Aarghyadeep Das',
+        description: 'How are you boss?',
         image: require('../assets/alpha.jpg')
     },
     {
         id: 2,
-        title: 't2',
-        description: 'd2',
+        title: 'Abhijit Roy',
+        description: 'Hey bro where are you? how have you been? Mr alpha is the best person in the world! Ji hind! jai Bharath!',
         image: require('../assets/alpha.jpg')
     },
     {
         id: 3,
-        title: 't3',
-        description: 'd3',
+        title: 'Sujoy Sj',
+        description: 'Virat Kohli rocks!',
         image: require('../assets/alpha.jpg')
     }
 ]
