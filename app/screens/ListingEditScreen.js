@@ -10,6 +10,7 @@ import {
   import Screen from "../components/Screen";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import UseLocation from "../hooks/UseLocation";
+import colors from "../config/colors";
   
 
 
@@ -128,5 +129,6 @@ const styles = StyleSheet.create({
     container: {
       padding: 10,
       marginTop: 20,
+      backgroundColor: colors.white,
     },
   });
